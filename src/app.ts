@@ -7,6 +7,8 @@ import cors from 'cors';
 // import files 
 import { PORT } from './config/initial.config';
 import connectDB from './config/db.config';
+import userRouter from './routes/user.router';
+
 
 // initialize app
 const app = express();
@@ -15,6 +17,9 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+// routes
+app.use('/',userRouter)
+
 // connecting to database
 connectDB();
 
@@ -22,3 +27,4 @@ connectDB();
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:/${PORT}`);
 })
+
